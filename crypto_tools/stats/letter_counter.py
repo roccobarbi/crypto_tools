@@ -9,7 +9,7 @@ class LetterCounter:
 
     def __str__(self):
         counter = self.count()
-        return '[%s]' % ({", ".join(": ".join(str(c), str(counter[c])) for c in counter)})
+        return '[%s]' % ({", ".join(": ".join([str(c), str(counter[c])]) for c in counter)})
 
     def count(self):
         if self.counter == {}:
