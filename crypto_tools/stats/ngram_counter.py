@@ -1,10 +1,14 @@
+from functools import reduce
+
+
 class NgramCounter:
-    def __init__(self, text=""):
+    def __init__(self, nvalue=2, text=""):
         self.text = text
+        self.nvalue = int(nvalue)
         self.counter = {}
 
     def __repr__(self):
-        return 'NgramCounter(text=%s)' % self.text
+        return 'NgramCounter(nvalue=%s, text=%s)' % (str(self.nvalue), self.text)
 
     def __str__(self):
         counter = self.count()
@@ -12,12 +16,12 @@ class NgramCounter:
 
     def count(self):
         if self.counter == {}:
-            for position, character in enumerate(self.text[:-1]):
-                if character.isalnum() and self.text[position + 1].isalnum():
-                    if self.text[position:position + 1] not in self.counter.keys():
-                        self.counter[self.text[position:position + 1]] = 1
+            for position, character in enumerate(self.text[:-self.nvalue]):
+                if reduce((lambda a, b: a and b.isalnum()), self.text[position:position + self.nvalue - 1], True):
+                    if self.text[position:position + self.nvalue - 1] not in self.counter.keys():
+                        self.counter[self.text[position:position + self.nvalue - 1]] = 1
                     else:
-                        self.counter[self.text[position:position + 1]] += 1
+                        self.counter[self.text[position:position + self.nvalue - 1]] += 1
         return self.counter
 
     def set_text(self, text):
