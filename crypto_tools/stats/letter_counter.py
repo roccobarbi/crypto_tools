@@ -16,11 +16,12 @@ class LetterCounter:
             for letter in self.alphabet:
                 self.counter[letter] = 0
             for character in self.text:
-                if character not in self.alphabet:
-                    self.alphabet.append(character)
-                    self.counter[character] = 1
-                else:
-                    self.counter[character] += 1
+                if character.isalnum():
+                    if character not in self.alphabet:
+                        self.alphabet.append(character)
+                        self.counter[character] = 1
+                    else:
+                        self.counter[character] += 1
         return self.counter
 
     def set_text(self, text):
