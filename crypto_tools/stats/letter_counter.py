@@ -14,14 +14,15 @@ class LetterCounter:
     def count(self):
         if self.counter == {}:
             for letter in self.alphabet:
-                self.counter[letter] = 0
+                self.counter[str(letter).lower()] = 0
             for character in self.text:
                 if character.isalnum():
-                    if character not in self.alphabet:
-                        self.alphabet.append(character)
-                        self.counter[character] = 1
+                    standardised_character = str(character).lower()
+                    if standardised_character not in self.alphabet:
+                        self.alphabet.append(standardised_character)
+                        self.counter[standardised_character] = 1
                     else:
-                        self.counter[character] += 1
+                        self.counter[standardised_character] += 1
         return self.counter
 
     def set_text(self, text):
