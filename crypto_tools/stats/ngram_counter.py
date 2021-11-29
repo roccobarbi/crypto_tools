@@ -16,7 +16,7 @@ class NgramCounter:
 
     def count(self):
         if self.counter == {}:
-            for position, character in enumerate(self.text[:-self.nvalue]):
+            for position, character in enumerate(self.text[:-self.nvalue + 1]):
                 if reduce((lambda a, b: a and b.isalnum()), self.text[position:position + self.nvalue - 1], True):
                     if self.text[position:position + self.nvalue - 1] not in self.counter.keys():
                         self.counter[self.text[position:position + self.nvalue - 1]] = 1
