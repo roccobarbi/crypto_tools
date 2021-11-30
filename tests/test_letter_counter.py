@@ -38,7 +38,7 @@ class TestLetterCounter(unittest.TestCase):
             "y": 1,
             "z": 1,
         }
-        self.assertEqual(counter, correct)  # add assertion here
+        self.assertEqual(counter, correct)
 
 
 if __name__ == '__main__':

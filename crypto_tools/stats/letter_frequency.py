@@ -1,6 +1,6 @@
 import functools
 
-from letter_counter import LetterCounter
+from .letter_counter import LetterCounter
 
 
 class LetterFrequency:
@@ -14,7 +14,7 @@ class LetterFrequency:
 
     def __str__(self):
         frequency = self.calculate()
-        return '[%s]' % ({", ".join(": ".join([str(c), str(counter[c])]) for c in counter)})
+        return '[%s]' % ({", ".join(": ".join([str(c), str(frequency[c])]) for c in frequency)})
 
     def calculate(self):
         if len(self.text.strip()) == 0:
