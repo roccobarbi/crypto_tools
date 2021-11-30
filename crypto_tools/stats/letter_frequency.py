@@ -1,5 +1,3 @@
-import functools
-
 from .letter_counter import LetterCounter
 
 
