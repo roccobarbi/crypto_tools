@@ -16,12 +16,12 @@ class NgramCounter:
 
     def count(self):
         if self.counter == {}:
-            for position, character in enumerate(self.text[:-self.nvalue + 1]):
-                if reduce((lambda a, b: a and b.isalnum()), self.text[position:position + self.nvalue - 1], True):
-                    if self.text[position:position + self.nvalue - 1] not in self.counter.keys():
-                        self.counter[self.text[position:position + self.nvalue - 1]] = 1
-                    else:
-                        self.counter[self.text[position:position + self.nvalue - 1]] += 1
+            text = "".join(self.text.split())
+            for position, character in enumerate(text[:-self.nvalue + 1]):
+                if text[position:position + self.nvalue].lower() not in self.counter.keys():
+                    self.counter[text[position:position + self.nvalue].lower()] = 1
+                else:
+                    self.counter[text[position:position + self.nvalue].lower()] += 1
         return self.counter
 
     def set_text(self, text):

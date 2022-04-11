@@ -4,7 +4,7 @@ from crypto_tools.stats import ngram_counter
 
 class TestNgramCounter(unittest.TestCase):
     def test_count_empty(self):
-        counter = ngram_counter.NgramCounter("")
+        counter = ngram_counter.NgramCounter(text="")
         self.assertEqual(counter.count(), {})
 
     def test_count_text(self):
