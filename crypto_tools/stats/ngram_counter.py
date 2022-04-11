@@ -1,6 +1,3 @@
-from functools import reduce
-
-
 class NgramCounter:
     def __init__(self, nvalue=2, text=""):
         self.text = text
