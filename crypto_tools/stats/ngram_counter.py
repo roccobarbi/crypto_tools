@@ -1,11 +1,4 @@
-from string import whitespace
-
-
-def _has_whitespace(text):
-    for character in text:
-        if character in whitespace:
-            return True
-    return False
+from ..utils import string_utils
 
 
 class NgramCounter:
@@ -33,7 +26,7 @@ class NgramCounter:
             else:
                 text = self.text
             for position, character in enumerate(text[:-self.nvalue + 1]):
-                if not _has_whitespace(text[position:position + self.nvalue]):
+                if not string_utils.has_whitespace(text[position:position + self.nvalue]):
                     if text[position:position + self.nvalue].lower() not in self.counter.keys():
                         self.counter[text[position:position + self.nvalue].lower()] = 1
                     else:
