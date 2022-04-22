@@ -2,23 +2,26 @@ from .ngram_counter import NgramCounter
 
 
 class NgramFrequency:
-    def __init__(self, nvalue=2, text=""):
+    def __init__(self, nvalue=2, text="", joined=True):
         self.text = text
         self.nvalue = int(nvalue)
+        self.joined = joined
         self.frequency = {}
-        self.ngram_count = NgramCounter(nvalue=nvalue, text=text)
+        self.ngram_count = NgramCounter(nvalue=nvalue, text=text, joined=joined)
 
     def __repr__(self):
-        return 'NgramFrequency(nvalue=%d, text=%s)' % self.nvalue, self.text
+        return 'NgramFrequency(nvalue={nvalue}, text={text}, joined={joined})'.format(
+            nvalue=self.nvalue,
+            text=self.text,
+            joined=self.joined
+        )
 
     def __str__(self):
         frequency = self.calculate()
-        return '[%s]' % ({", ".join(": ".join([str(c), str(frequency[c])]) for c in frequency)})
+        return '{}'.format({", ".join(": ".join([str(c), str(frequency[c])]) for c in frequency)})
 
     def calculate(self):
-        if len(self.text.strip()) == 0:
-            return {}
-        if self.frequency == {}:
+        if self.frequency == {} and len(self.text.strip()) > 0:
             counter = self.ngram_count.count()
             length = 0
             for item in counter.keys():
