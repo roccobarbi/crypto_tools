@@ -1,4 +1,4 @@
-import analysis
-import data
-import utils
-import stats
+from analysis import *
+from data import *
+from utils import *
+from stats import *
