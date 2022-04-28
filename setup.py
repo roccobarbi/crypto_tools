@@ -5,6 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="crypto_tools",
+    py_modules=['crypto_tools'],
     version="1.0.2",
     author="Rocco Barbini",
     author_email="roccobarbi@gmail.com",
