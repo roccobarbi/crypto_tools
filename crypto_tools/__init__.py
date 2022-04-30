@@ -1,4 +1,1 @@
-from .analysis import *
-from .data import *
-from .utils import *
-from .stats import *
+__all__ = ["analysis", "data", "stats", "utils"]
