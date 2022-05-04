@@ -1,1 +1,1 @@
-import string_utils
+from .string_utils import has_whitespace
