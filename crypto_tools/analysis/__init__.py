@@ -1,1 +1,1 @@
-__all__ = ["language_estimator"]
+from .language_estimator import LanguageEstimator
