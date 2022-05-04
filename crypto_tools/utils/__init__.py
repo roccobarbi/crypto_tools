@@ -1,1 +1,1 @@
-__all__ = ["string_utils"]
+import string_utils
