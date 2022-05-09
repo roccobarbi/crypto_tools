@@ -33,8 +33,6 @@ class NgramCounter:
             else:
                 text = self.text
             for position, character in enumerate(text[:-self.nvalue + 1]):
-                if self.counter == {}:
-                    print(text[position:position + self.nvalue])
                 if not string_utils.has_whitespace(text[position:position + self.nvalue]):
                     if not string_utils.includes_other_letters(text[position:position + self.nvalue], self.alphabet):
                         if text[position:position + self.nvalue].lower() not in self.counter.keys():
