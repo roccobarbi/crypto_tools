@@ -77,6 +77,42 @@ class TestNgramCounter(unittest.TestCase):
         }
         self.assertEqual(counter, correct)
 
+    def test_count_text_with_nonalphabetic_characters(self):
+        text = "The quick, brown fox jumps over the lazy dog!"
+        counter = ngram_counter.NgramCounter(nvalue=4, text=text, joined=True).count()
+        correct={
+            "theq": 1,
+            "hequ": 1,
+            "equi": 1,
+            "quic": 1,
+            "uick": 1,
+            "brow": 1,
+            "rown": 1,
+            "ownf": 1,
+            "wnfo": 1,
+            "nfox": 1,
+            "foxj": 1,
+            "oxju": 1,
+            "xjum": 1,
+            "jump": 1,
+            "umps": 1,
+            "mpso": 1,
+            "psov": 1,
+            "sove": 1,
+            "over": 1,
+            "vert": 1,
+            "erth": 1,
+            "rthe": 1,
+            "thel": 1,
+            "hela": 1,
+            "elaz": 1,
+            "lazy": 1,
+            "azyd": 1,
+            "zydo": 1,
+            "ydog": 1
+        }
+        self.assertEqual(counter, correct)
+
 
 if __name__ == '__main__':
     unittest.main()
