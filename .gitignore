@@ -1,3 +1,5 @@
 .idea/
 dist/
 crypto_tools.egg-info/
+__pycache__/
+.vscode/
