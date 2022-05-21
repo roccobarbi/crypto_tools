@@ -12,9 +12,16 @@ class IndexOfCoincidence:
     def calculate(self):
         if self.ic is None:
             counter = LetterCounter(text=self.text)
-            alphabet = counter.count()
-            ic = 0
+            count = counter.count()
+            alphabet = counter.get_alphabet()
+            prob = 0
             for letter in alphabet:
-                ic += alphabet[letter] / len(self.text) * (alphabet[letter] - 1) / (len(self.text) - 1)
-            self.ic = ic
+                prob += count[letter] * (count[letter] - 1)
+            length = 0
+            for character in self.text:
+                if counter.is_lower():
+                    character = character.lower()
+                if character in alphabet:
+                    length += 1
+            self.ic = prob / (length * (length - 1))
         return self.ic

@@ -41,6 +41,9 @@ class LetterCounter:
     def get_text(self):
         return self.text
 
+    def is_lower(self):
+        return self.lower
+
     def get_alphabet(self):
         if self.alphabet == [] and len(self.text) > 0:
             for character in self.text:
